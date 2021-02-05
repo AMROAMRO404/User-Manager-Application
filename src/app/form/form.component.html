@@ -1,0 +1,24 @@
+<navbar></navbar>
+<form #userForm="ngForm" style="padding: 50px;" (ngSubmit)="registerUser(userForm)">
+    <div class="mb-3 form-group">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="your name" ngModel>
+    </div>
+    <div class="mb-3 form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="your email" ngModel>
+    </div>
+    <div class="mb-3 form-group">
+        <label class="form-label">Role</label>
+        <input type="text" class="form-control" name="role" placeholder="your role" ngModel>
+    </div>
+    <div class="mb-3 form-group">
+        <label class="form-label">Status</label>
+        <input type="text" class="form-control" name="status" placeholder="your status" ngModel>
+    </div>
+    <div class="mb-3 form-group">
+        <label class="form-label">Creation Data</label>
+        <input type="date" class="form-control" name="date" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
