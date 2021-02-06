@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
-import { User } from '../user';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',

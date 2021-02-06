@@ -17,7 +17,7 @@ export class UsersComponent implements OnInit {
       this.users = data.map((element: any) => {
         return {
           id: element.payload.doc.id,
-          avatar: "newUser.avatar",
+          avatar: element.payload.doc.data()['avatar'],
           email: element.payload.doc.data()['email'],
           name: element.payload.doc.data()['name'],
           role: element.payload.doc.data()['role'],
