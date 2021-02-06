@@ -15,6 +15,7 @@ import { AboutComponent } from './about/about.component';
 import { FormComponent } from './form/form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { SearchComponent } from './search/search.component';
     AboutComponent,
     FormComponent,
     NavbarComponent,
-    SearchComponent
+    SearchComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ export class FirebaseService {
 
   users: any = [];
   constructor(private firestore: AngularFirestore) { }
-
+  currentUserIdToupdate: any;
   getUserList() {
     return this.firestore.collection('/users').snapshotChanges();
   }
@@ -20,6 +20,9 @@ export class FirebaseService {
   }
   deleteUser(userId: any) {
     this.firestore.doc('/users/' + userId).delete();
+  }
+  getUser(userId: any) {
+    return this.firestore.collection('/users/').doc(userId).get();
   }
   //deleteUser(user: User) { }
   // getUsersList() {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { FirebaseService } from '../firebase.service';
 export class UsersComponent implements OnInit {
   users: any;
 
-  constructor(private firebaseService: FirebaseService) { }
+  constructor(private firebaseService: FirebaseService, private router: Router) { }
   user: any
   ngOnInit(): void {
     this.firebaseService.getUserList().subscribe(data => {
@@ -28,6 +29,11 @@ export class UsersComponent implements OnInit {
   }
   deleteUser(userNumber: any) {
     this.firebaseService.deleteUser(userNumber.id)
+  }
+
+  onUpdate(userId: any) {
+    this.firebaseService.currentUserIdToupdate = userId;
+    this.router.navigate(['/edit-user'])
   }
 
 
