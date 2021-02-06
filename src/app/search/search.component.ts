@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class UsersComponent implements OnInit {
-  users: any;
+export class SearchComponent implements OnInit {
 
-  constructor(private firebaseService: FirebaseService) { }
-  user: any
+  users: any[] = [];
+  user: any;
+  constructor(private firebaseService: FirebaseService) {
+  }
+
   ngOnInit(): void {
     this.firebaseService.getUserList().subscribe(data => {
       this.users = data.map((element: any) => {
@@ -29,6 +31,5 @@ export class UsersComponent implements OnInit {
   deleteUser(userNumber: any) {
     this.firebaseService.deleteUser(userNumber.id)
   }
-
 
 }

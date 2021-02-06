@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { user } from '../user';
+import { Router } from '@angular/router';
+import { FirebaseService } from '../firebase.service';
+import { User } from '../user';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -8,12 +10,20 @@ import { user } from '../user';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
+  date = new Date();
+  creationDate = this.date.toDateString()
+
+  user = {};
   registerUser(userForm: NgForm) {
     console.log(userForm.value)
+    this.firebaseService.addUser(userForm.value)
+    this.router.navigate(['/users'])
   }
+
 
 }

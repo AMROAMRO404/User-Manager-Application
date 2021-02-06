@@ -1,9 +1,10 @@
-export class user {
+export class User {
     constructor(
         private email: String,
-        private crDate: Date,
+        private crDate: String,
         private role: String,
         private status: String,
-        private profile: any
+        private name: String,
+        private image: String
     ) { }
 }

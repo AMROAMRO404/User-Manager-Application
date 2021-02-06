@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms'
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module';
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -13,7 +14,7 @@ import { UsersComponent } from './users/users.component';
 import { AboutComponent } from './about/about.component';
 import { FormComponent } from './form/form.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { UserRowComponent } from './user-row/user-row.component';
+import { SearchComponent } from './search/search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { UserRowComponent } from './user-row/user-row.component';
     AboutComponent,
     FormComponent,
     NavbarComponent,
-    UserRowComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,9 @@ import { UserRowComponent } from './user-row/user-row.component';
       environment.firebase
     ),
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    AngularFirestoreModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

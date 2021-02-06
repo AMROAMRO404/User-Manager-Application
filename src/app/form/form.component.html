@@ -1,24 +1,50 @@
-<navbar></navbar>
-<form #userForm="ngForm" style="padding: 50px;" (ngSubmit)="registerUser(userForm)">
-    <div class="mb-3 form-group">
-        <label class="form-label">Name</label>
-        <input type="text" class="form-control" name="name" placeholder="your name" ngModel>
+<div style="padding: 50px;">
+    <h2>User Form</h2>
+    <form #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
+        <div class="mb-3 form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" minlength="3" maxlength="12" name="name" #userName="ngModel" placeholder="your name" ngModel required>
+            <div class="alert alert-danger" *ngIf="!userName.valid && userName.touched">
+                <div *ngIf='userName.errors?.required'>Name is required ...</div>
+                <div *ngIf='userName.errors?.minlength'>min length is 3 characters ...</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" minlength="10" maxlength="30" #userEmail="ngModel" name="email" placeholder="your email" ngModel required>
+            <div class="alert alert-danger" *ngIf="userEmail.touched && !userEmail.valid">
+                <div *ngIf='userEmail.errors?.required'>Email is required ...</div>
+                <div *ngIf='userEmail.errors?.minlength'>min length is 10 characters ...</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label">Role</label>
+            <input type="text" class="form-control" minlength="3" maxlength="12" #userRole="ngModel" name="role" placeholder="your role" ngModel required>
+            <div class="alert alert-danger" *ngIf="!userRole.valid && userRole.touched">
+                <div *ngIf='userRole.errors?.required'>Role is required ...</div>
+                <div *ngIf='userRole.errors?.minlength'>min length is 3 characters ...</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label">Status</label>
+            <input type="text" class="form-control" minlength="3" maxlength="12" #userStatus="ngModel" name="status" placeholder="your status" ngModel required>
+            <div class="alert alert-danger" *ngIf="!userStatus.valid && userStatus.touched">
+                <div *ngIf='userStatus.errors?.required'>Status is required ...</div>
+                <div *ngIf='userStatus.errors?.minlength'>min length is 3 characters ...</div>
+            </div>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label">Creatin Date</label>
+            <input readonly value="creationDate" type="text" class="form-control" name="creationDate" [(ngModel)]="creationDate" ngModel>
+        </div>
+        <div class="mb-3 form-group">
+            <label class="form-label">Avatar</label>
+            <input type="file" class="form-control" #userAvatar="ngModel" name="avatar" ngModel required>
+            <div class="alert alert-danger" *ngIf="userAvatar.touched && !userAvatar.valid">Avatar is required ... </div>
+        </div>
+        <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div style="padding-top: 20px;">
+        <button routerLink='/users' class="btn btn-secondary">Back to the users list</button>
     </div>
-    <div class="mb-3 form-group">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" name="email" placeholder="your email" ngModel>
-    </div>
-    <div class="mb-3 form-group">
-        <label class="form-label">Role</label>
-        <input type="text" class="form-control" name="role" placeholder="your role" ngModel>
-    </div>
-    <div class="mb-3 form-group">
-        <label class="form-label">Status</label>
-        <input type="text" class="form-control" name="status" placeholder="your status" ngModel>
-    </div>
-    <div class="mb-3 form-group">
-        <label class="form-label">Creation Data</label>
-        <input type="date" class="form-control" name="date" ngModel>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
