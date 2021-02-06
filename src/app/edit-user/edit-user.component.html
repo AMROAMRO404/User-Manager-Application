@@ -34,6 +34,10 @@
                 <div *ngIf='userStatus.errors?.minlength'>min length is 3 characters ...</div>
             </div>
         </div>
-        <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
+        <div class="mb-3 form-group">
+            <label class="form-label">Creatin Date</label>
+            <input readonly value="creationDate" type="text" class="form-control" name="creationDate" [(ngModel)]="userToUpdate.creationDate" ngModel>
+        </div>
+        <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Update</button>
     </form>
 </div>

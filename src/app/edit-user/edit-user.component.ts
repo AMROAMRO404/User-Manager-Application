@@ -14,7 +14,6 @@ export class EditUserComponent implements OnInit {
   userId: any;
   ngOnInit(): void {
     this.userId = this.firebaseService.currentUserIdToupdate;
-    console.log(this.userId)
     this.firebaseService.getUser(this.userId).subscribe(doc => {
       if (doc.exists) {
         this.userToUpdate = doc.data();
