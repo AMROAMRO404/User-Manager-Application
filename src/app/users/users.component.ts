@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
           role: element.payload.doc.data()['role'],
           status: element.payload.doc.data()['status'],
           creationDate: element.payload.doc.data()['creationDate'],
+          imageUrl: element.payload.doc.data()['imageUrl'],
         }
       })
     })

@@ -16,6 +16,7 @@ import { FormComponent } from './form/form.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchComponent } from './search/search.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     AngularFireDatabaseModule,
     FormsModule,
     AngularFirestoreModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

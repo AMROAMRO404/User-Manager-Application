@@ -1,4 +1,18 @@
 <navbar></navbar>
+<div style="padding-top: 20px;">
+    <div *ngIf="userToUpdate" class="card" style="width: 18rem;margin: auto;">
+        <img [src]="userToUpdate.imageUrl" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{userToUpdate.name}}</h5>
+            <p class="card-text"><strong>email: </strong><em>{{userToUpdate.email}}</em></p>
+            <p class="card-text"><strong>status: </strong><em>{{userToUpdate.status}}</em></p>
+            <p class="card-text"><strong>role: </strong><em>{{userToUpdate.role}}</em></p>
+            <a routerLink="/" class="btn btn-primary">Go to home page</a>
+        </div>
+    </div>
+</div>
+
+
 <div style="padding: 50px;" *ngIf="userToUpdate">
     <h2>User Form</h2>
     <form #userForm="ngForm" (ngSubmit)="updateUser(userForm.value)">

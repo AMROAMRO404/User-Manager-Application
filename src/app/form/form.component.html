@@ -51,9 +51,10 @@
         </div>
         <div class="mb-3 form-group">
             <label for="Avatar" class="form-label">Avatar</label>
-            <input id="Avatar" type="file" class="form-control" #userAvatar="ngModel" name="avatar" ngModel required>
+            <input (input)="onFileChanged($event)" accept=".jpeg,.jpg,.png,.svg" id="Avatar" type="file" class="form-control" #userAvatar="ngModel" name="avatar" ngModel required>
             <div class="alert alert-danger" *ngIf="userAvatar.touched && !userAvatar.valid">Avatar is required ... </div>
         </div>
+
         <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
