@@ -7,22 +7,23 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class FirebaseService {
 
   users: any = [];
+  usersUrl = '/users';
   constructor(private firestore: AngularFirestore) { }
   currentUserIdToupdate: any;
   getUserList() {
-    return this.firestore.collection('/users').snapshotChanges();
+    return this.firestore.collection(this.usersUrl).snapshotChanges();
   }
   addUser(newUser: any) {
-    return this.firestore.collection('/users').add(newUser)
+    return this.firestore.collection(this.usersUrl).add(newUser)
   }
   updateUser(userId: any, user: any) {
-    this.firestore.doc('/users/' + userId).update(user);
+    this.firestore.doc(this.usersUrl + userId).update(user);
   }
   deleteUser(userId: any) {
-    this.firestore.doc('/users/' + userId).delete();
+    this.firestore.doc(this.usersUrl + userId).delete();
   }
   getUser(userId: any) {
-    return this.firestore.collection('/users/').doc(userId).get();
+    return this.firestore.collection(this.usersUrl).doc(userId).get();
   }
 
 }
