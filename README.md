@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Develop an Angular application "User Manager" that basically (as the name implies) used to manage users.
 
+### This repo is part of the PSEU training. Project description:
 ### The application should contain and consider the following:
 
 * Top Nav-bar with the following items: Home, Users and About.
