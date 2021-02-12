@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
     })
   }
   deleteUser(userNumber: any) {
-    if (confirm(`Are you sure to delete ${userNumber.name}`))
+    if (confirm(`Are you sure to delete ${userNumber.name} ?`))
       this.firebaseService.deleteUser(userNumber.id)
   }
 
