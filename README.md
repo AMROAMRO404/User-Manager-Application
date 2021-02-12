@@ -2,26 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Develop an Angular application "User Manager" that basically (as the name implies) used to manage users.
 
-## Code scaffolding
+### The application should contain and consider the following:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* Top Nav-bar with the following items: Home, Users and About.
+* Each item will navigate to a separate component (Angular component).
+* Home should have welcome text and two quick action items:
+     * Search text box to quickly find a user.
+     * Big "Add new user" button. 
+* Users component should have a data table with the following columns:
+     Id, Name, Email, Role, Status, Creation Date and Action. 
+* In Name column display the name of the user and the image/avatar to the left (as in above image).
+* There should be at least one component that has form to add/edit user's info (including  upload user image).
+* All form(s) fields should be validated properly.
+* In About component put a few lines about yourself and how you implement this project.
+* Data should be stored and retrieved from Firebase.
+* Role dropdown (it should be a dropdown), use the following items: User, Administrator
+* Status dropdown, use: Active, Locked, Disable
