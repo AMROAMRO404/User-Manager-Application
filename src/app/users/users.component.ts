@@ -28,7 +28,8 @@ export class UsersComponent implements OnInit {
     })
   }
   deleteUser(userNumber: any) {
-    this.firebaseService.deleteUser(userNumber.id)
+    if (confirm(`Are you sure to delete ${userNumber.name}`))
+      this.firebaseService.deleteUser(userNumber.id)
   }
 
   onUpdate(userId: any) {

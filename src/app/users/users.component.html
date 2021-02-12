@@ -19,12 +19,12 @@
                 <th>{{user.email}}</th>
                 <th>{{user.role}}</th>
                 <th>{{user.status}}</th>
-                <th>
-                    <span style="padding: 5px;">
-                        <button (click)="onUpdate(user.id)" type="button" class="btn btn-secondary">update</button>
+                <th style="padding-left: 20px;">
+                    <span style="padding: 10px; ">
+                        <i style="color: rgb(109, 108, 108);" (click)="onUpdate(user.id)" type="button" class="material-icons">person</i>
                     </span>
-                    <span style="padding: 5px;">
-                        <button (click)="deleteUser(user)" type="button" class="btn btn-danger">delete</button>
+                    <span style="padding: 10px;">
+                        <i style="color: rgb(218, 42, 42);" (click)="deleteUser(user)" type="button" class="material-icons">delete</i>
                     </span>
                 </th>
             </tr>

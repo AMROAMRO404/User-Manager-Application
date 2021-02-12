@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class SearchComponent implements OnInit {
 
   users: any[] = [];
   user: any;
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private firebaseService: FirebaseService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,13 @@ export class SearchComponent implements OnInit {
     })
   }
   deleteUser(userNumber: any) {
-    this.firebaseService.deleteUser(userNumber.id)
+    if (confirm(`Are you sure to delete ${userNumber.name}`))
+      this.firebaseService.deleteUser(userNumber.id)
+  }
+
+  onUpdate(userId: any) {
+    this.firebaseService.currentUserIdToupdate = userId;
+    this.router.navigate(['/edit-user'])
   }
 
 }

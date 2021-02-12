@@ -3,44 +3,55 @@
     <h2>User Form</h2>
     <form #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
         <div class="mb-3 form-group">
-            <label class="form-label">Name</label>
-            <input type="text" class="form-control" minlength="3" maxlength="12" name="name" #userName="ngModel" placeholder="your name" ngModel required>
+            <label for="Name" class="form-label">Name</label>
+            <input id="Name" type="text" class="form-control" minlength="3" maxlength="12" name="name" #userName="ngModel" placeholder="your name" ngModel required>
             <div class="alert alert-danger" *ngIf="!userName.valid && userName.touched">
                 <div *ngIf='userName.errors?.required'>Name is required ...</div>
                 <div *ngIf='userName.errors?.minlength'>min length is 3 characters ...</div>
             </div>
         </div>
         <div class="mb-3 form-group">
-            <label class="form-label">Email</label>
-            <input type="email" class="form-control" minlength="10" maxlength="30" #userEmail="ngModel" name="email" placeholder="your email" ngModel required>
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" minlength="10" maxlength="30" #userEmail="ngModel" name="email" placeholder="your email" ngModel required>
             <div class="alert alert-danger" *ngIf="userEmail.touched && !userEmail.valid">
                 <div *ngIf='userEmail.errors?.required'>Email is required ...</div>
                 <div *ngIf='userEmail.errors?.minlength'>min length is 10 characters ...</div>
+                <div *ngIf='userEmail.errors?.pattern'>This is not valid email ...</div>
             </div>
         </div>
-        <div class="mb-3 form-group">
-            <label class="form-label">Role</label>
-            <input type="text" class="form-control" minlength="3" maxlength="12" #userRole="ngModel" name="role" placeholder="your role" ngModel required>
+        <div class="mb-3">
+            <label for="inputGroupSelect01" class="form-label">Role</label>
+            <div class="input-group">
+                <select class="form-select" id="inputGroupSelect01" #userRole="ngModel" name="role" ngModel="User" required>
+                      <option selected value="User">User</option>
+                      <option value="Administrator">Administrator</option>
+                </select>
+            </div>
             <div class="alert alert-danger" *ngIf="!userRole.valid && userRole.touched">
                 <div *ngIf='userRole.errors?.required'>Role is required ...</div>
-                <div *ngIf='userRole.errors?.minlength'>min length is 3 characters ...</div>
             </div>
         </div>
-        <div class="mb-3 form-group">
-            <label class="form-label">Status</label>
-            <input type="text" class="form-control" minlength="3" maxlength="12" #userStatus="ngModel" name="status" placeholder="your status" ngModel required>
+        <div class="mb-3">
+            <label for="inputGroupSelect02" class="form-label">Status</label>
+            <div class="input-group">
+                <select class="form-select" id="inputGroupSelect02" #userStatus="ngModel" name="status" ngModel="Active" required>
+                      <option selected value="Active">Active</option>
+                      <option value="Locked">Locked</option>
+                      <option value="Disabled">Disabled</option>
+                </select>
+            </div>
             <div class="alert alert-danger" *ngIf="!userStatus.valid && userStatus.touched">
                 <div *ngIf='userStatus.errors?.required'>Status is required ...</div>
-                <div *ngIf='userStatus.errors?.minlength'>min length is 3 characters ...</div>
             </div>
         </div>
+
         <div class="mb-3 form-group">
-            <label class="form-label">Creatin Date</label>
-            <input readonly value="creationDate" type="text" class="form-control" name="creationDate" [(ngModel)]="creationDate" ngModel>
+            <label for="creationDate" class="form-label">Creatin Date</label>
+            <input id="creationDate" readonly value="creationDate" type="text" class="form-control" name="creationDate" [(ngModel)]="creationDate" ngModel>
         </div>
         <div class="mb-3 form-group">
-            <label class="form-label">Avatar</label>
-            <input type="file" class="form-control" #userAvatar="ngModel" name="avatar" ngModel required>
+            <label for="Avatar" class="form-label">Avatar</label>
+            <input id="Avatar" type="file" class="form-control" #userAvatar="ngModel" name="avatar" ngModel required>
             <div class="alert alert-danger" *ngIf="userAvatar.touched && !userAvatar.valid">Avatar is required ... </div>
         </div>
         <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
