@@ -55,6 +55,6 @@
             <div class="alert alert-danger" *ngIf="userAvatar.touched && !userAvatar.valid">Avatar is required ... </div>
         </div>
 
-        <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="!userForm.valid || downloadableURL==''" type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

@@ -40,10 +40,10 @@ export class FormComponent implements OnInit {
   user = {};
   formToSubmit: any
   registerUser(userForm: NgForm) {
-    console.log(userForm.value)
     this.formToSubmit = userForm.value
-    userForm.value['imageUrl'] = this.downloadableURL
+    this.formToSubmit['imageUrl'] = this.downloadableURL
     this.firebaseService.addUser(this.formToSubmit)
+    console.log(this.formToSubmit)
     this.router.navigate(['/users'])
   }
 }
