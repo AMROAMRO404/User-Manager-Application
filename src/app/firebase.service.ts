@@ -7,7 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class FirebaseService {
 
   users: any = [];
-  usersUrl = '/users';
+  usersUrl = '/users/';
   constructor(private firestore: AngularFirestore) { }
   currentUserIdToupdate: any;
   getUserList() {
