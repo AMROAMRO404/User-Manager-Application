@@ -1,67 +1,73 @@
 <navbar></navbar>
-<div style="padding-top: 20px;">
-    <div *ngIf="userToUpdate" class="card" style="width: 18rem;margin: auto;">
-        <img [src]="userToUpdate.imageUrl" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">{{userToUpdate.name}}</h5>
-            <p class="card-text"><strong>email: </strong><em>{{userToUpdate.email}}</em></p>
-            <p class="card-text"><strong>status: </strong><em>{{userToUpdate.status}}</em></p>
-            <p class="card-text"><strong>role: </strong><em>{{userToUpdate.role}}</em></p>
-            <a routerLink="/" class="btn btn-primary">Go to home page</a>
+
+<div class="container">
+    <div class="row" style="padding: 50px 0px;">
+        <div class="col-lg-4">
+                <div *ngIf="userToUpdate" class="card" style="width: 18rem;margin: auto;">
+                    <img [src]="userToUpdate.imageUrl" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{userToUpdate.name}}</h5>
+                        <p class="card-text"><strong>email: </strong><em>{{userToUpdate.email}}</em></p>
+                        <p class="card-text"><strong>status: </strong><em>{{userToUpdate.status}}</em></p>
+                        <p class="card-text"><strong>role: </strong><em>{{userToUpdate.role}}</em></p>
+                        <a routerLink="/" class="btn btn-primary">Go to home page</a>
+                    </div>
+            </div>
+        </div>
+        <div class="col-lg-8" >
+            <div *ngIf="userToUpdate">
+                <h2>User Form</h2>
+                <form #userForm="ngForm" (ngSubmit)="updateUser(userForm.value)">
+                    <div class="mb-3 form-group">
+                        <label for="Name" class="form-label">Name</label>
+                        <input id="Name" type="text" class="form-control" minlength="3" maxlength="12" name="name" #userName="ngModel" placeholder="your name" [(ngModel)]="userToUpdate.name" required>
+                        <div class="alert alert-danger" *ngIf="!userName.valid && userName.touched">
+                            <div *ngIf='userName.errors?.required'>Name is required ...</div>
+                            <div *ngIf='userName.errors?.minlength'>min length is 3 characters ...</div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="Email" class="form-label">Email</label>
+                        <input id="Email" type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" minlength="10" maxlength="30" #userEmail="ngModel" name="email" placeholder="your email" [(ngModel)]="userToUpdate.email" required>
+                        <div class="alert alert-danger" *ngIf="userEmail.touched && !userEmail.valid">
+                            <div *ngIf='userEmail.errors?.required'>Email is required ...</div>
+                            <div *ngIf='userEmail.errors?.minlength'>min length is 10 characters ...</div>
+                            <div *ngIf='userEmail.errors?.pattern'>This is not valid email ...</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputGroupSelect01" class="form-label">Role</label>
+                        <div class="input-group">
+                            <select class="form-select" id="inputGroupSelect01" [(ngModel)]="userToUpdate.role" #userRole="ngModel" name="role" required>
+                                  <option selected value="User">User</option>
+                                  <option value="Administrator">Administrator</option>
+                            </select>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="!userRole.valid && userRole.touched">
+                            <div *ngIf='userRole.errors?.required'>Role is required ...</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputGroupSelect02" class="form-label">Status</label>
+                        <div class="input-group">
+                            <select class="form-select" [(ngModel)]="userToUpdate.status" id="inputGroupSelect02" #userStatus="ngModel" name="status" ngModel required>
+                                  <option selected value="Active">Active</option>
+                                  <option value="Locked">Locked</option>
+                                  <option value="Disabled">Disabled</option>
+                            </select>
+                        </div>
+                        <div class="alert alert-danger" *ngIf="!userStatus.valid && userStatus.touched">
+                            <div *ngIf='userStatus.errors?.required'>Status is required ...</div>
+                        </div>
+                    </div>
+                    <div class="mb-3 form-group">
+                        <label for="CreatinDate" class="form-label">Creatin Date</label>
+                        <input id="CreatinDate" readonly value="creationDate" type="text" class="form-control" name="creationDate" [(ngModel)]="userToUpdate.creationDate" ngModel>
+                    </div>
+                    <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
-
-<div style="padding: 50px;" *ngIf="userToUpdate">
-    <h2>User Form</h2>
-    <form #userForm="ngForm" (ngSubmit)="updateUser(userForm.value)">
-        <div class="mb-3 form-group">
-            <label for="Name" class="form-label">Name</label>
-            <input id="Name" type="text" class="form-control" minlength="3" maxlength="12" name="name" #userName="ngModel" placeholder="your name" [(ngModel)]="userToUpdate.name" required>
-            <div class="alert alert-danger" *ngIf="!userName.valid && userName.touched">
-                <div *ngIf='userName.errors?.required'>Name is required ...</div>
-                <div *ngIf='userName.errors?.minlength'>min length is 3 characters ...</div>
-            </div>
-        </div>
-        <div class="mb-3 form-group">
-            <label for="Email" class="form-label">Email</label>
-            <input id="Email" type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" minlength="10" maxlength="30" #userEmail="ngModel" name="email" placeholder="your email" [(ngModel)]="userToUpdate.email" required>
-            <div class="alert alert-danger" *ngIf="userEmail.touched && !userEmail.valid">
-                <div *ngIf='userEmail.errors?.required'>Email is required ...</div>
-                <div *ngIf='userEmail.errors?.minlength'>min length is 10 characters ...</div>
-                <div *ngIf='userEmail.errors?.pattern'>This is not valid email ...</div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="inputGroupSelect01" class="form-label">Role</label>
-            <div class="input-group">
-                <select class="form-select" id="inputGroupSelect01" [(ngModel)]="userToUpdate.role" #userRole="ngModel" name="role" required>
-                      <option selected value="User">User</option>
-                      <option value="Administrator">Administrator</option>
-                </select>
-            </div>
-            <div class="alert alert-danger" *ngIf="!userRole.valid && userRole.touched">
-                <div *ngIf='userRole.errors?.required'>Role is required ...</div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="inputGroupSelect02" class="form-label">Status</label>
-            <div class="input-group">
-                <select class="form-select" [(ngModel)]="userToUpdate.status" id="inputGroupSelect02" #userStatus="ngModel" name="status" ngModel required>
-                      <option selected value="Active">Active</option>
-                      <option value="Locked">Locked</option>
-                      <option value="Disabled">Disabled</option>
-                </select>
-            </div>
-            <div class="alert alert-danger" *ngIf="!userStatus.valid && userStatus.touched">
-                <div *ngIf='userStatus.errors?.required'>Status is required ...</div>
-            </div>
-        </div>
-        <div class="mb-3 form-group">
-            <label for="CreatinDate" class="form-label">Creatin Date</label>
-            <input id="CreatinDate" readonly value="creationDate" type="text" class="form-control" name="creationDate" [(ngModel)]="userToUpdate.creationDate" ngModel>
-        </div>
-        <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary">Update</button>
-    </form>
-</div>
